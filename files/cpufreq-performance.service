@@ -1,0 +1,9 @@
+[Unit]
+Description=Set CPU governor to performance (Open Rowing Monitor)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'for g in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do [ -w "$g" ] && echo performance > "$g"; done'
+
+[Install]
+WantedBy=multi-user.target

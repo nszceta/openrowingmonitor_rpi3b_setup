@@ -1,0 +1,10 @@
+#!/bin/sh
+# Display kiosk client for Open Rowing Monitor: matchbox window manager plus
+# surf fullscreen on :0. Started by openrowingmonitor-display.service via xinit.
+# surf is exec'd so its exit ends the X session and systemd restarts the unit.
+
+# Disable X screen blanking and DPMS so the kiosk never goes dark.
+/usr/bin/xset s off -dpms
+
+/usr/bin/matchbox-window-manager -use_titlebar no &
+exec /usr/bin/surf -F -K -S http://127.0.0.1/

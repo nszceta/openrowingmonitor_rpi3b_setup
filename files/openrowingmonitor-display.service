@@ -1,0 +1,23 @@
+[Unit]
+Description=Open Rowing Monitor display kiosk (surf on Xorg)
+Requires=openrowingmonitor.service
+After=openrowingmonitor.service
+Conflicts=getty@tty1.service
+After=getty@tty1.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+ExecStart=/usr/bin/xinit /usr/local/bin/openrowingmonitor-display -- :0 vt1 -nolisten tcp
+
+[Install]
+WantedBy=multi-user.target

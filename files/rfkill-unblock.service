@@ -1,0 +1,11 @@
+[Unit]
+Description=Unblock Bluetooth radio for Open Rowing Monitor
+After=systemd-udev-settle.service
+Before=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rfkill unblock bluetooth
+
+[Install]
+WantedBy=multi-user.target

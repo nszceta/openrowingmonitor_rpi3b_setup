@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenRowingMonitor
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+WorkingDirectory=/opt/openrowingmonitor
+ExecStart=/usr/bin/node app/server.js
+
+[Install]
+WantedBy=multi-user.target
