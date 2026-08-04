@@ -1,9 +1,0 @@
-  File "/home/adam/.cache/uv/archive-v0/ubKgSnsWHeh-zjq1/lib/python3.14/site-packages/pyinfra_cli/cli.py", line 290, in cli
-    _main(*args, **kwargs)
-    ~~~~~^^^^^^^^^^^^^^^^^
-  File "/home/adam/.cache/uv/archive-v0/ubKgSnsWHeh-zjq1/lib/python3.14/site-packages/pyinfra_cli/cli.py", line 493, in _main
-    if not _do_confirm("Detected changes displayed above, skip this step with -y"):
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/adam/.cache/uv/archive-v0/ubKgSnsWHeh-zjq1/lib/python3.14/site-packages/pyinfra_cli/cli.py", line 521, in _do_confirm
-    v = input()
-EOFError: EOF when reading a line
