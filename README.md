@@ -8,7 +8,7 @@ This repository contains a pyinfra setup that installs [Open Rowing Monitor](htt
 
 These steps were performed by hand on the Pi. They are documented here so a fresh SD card can be reproduced:
 
-1. Download the Armbian 26.5.1 minimal image for Raspberry Pi 3B (arm64) from [armbian.com](https://www.armbian.com/rpi3b/), and verify the downloaded image against the published checksum.
+1. Download the Armbian 26.5.1 minimal image for Raspberry Pi 3B (arm64) from [armbian.com](https://armbian.com/boards/raspberrypi3b), and verify the downloaded image against the published checksum.
 2. Flash the image to a microSD card with balenaEtcher, or with dd:
 
    ```bash
