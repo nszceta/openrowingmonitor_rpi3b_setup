@@ -530,7 +530,7 @@ wheels = [
 ]
 
 [[package]]
-name = "openrowingmonitor-rpi3b-setup"
+name = "openrowingmonitor-sbc-setup"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

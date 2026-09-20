@@ -1,5 +1,6 @@
 """
-Deploy Open Rowing Monitor to a Raspberry Pi 3B running Armbian (Ubuntu base).
+Deploy Open Rowing Monitor to a compatible SBC running Armbian or a
+Debian/Ubuntu-based equivalent.
 
 Mirrors the official installer (install/install.sh + docs/README.md), optimized
 for minimal footprint and performance:
@@ -7,6 +8,10 @@ for minimal footprint and performance:
 - performance CPU governor via a oneshot unit (no cpufrequtils package needed)
 - pigpio source build fallback when the apt package is unavailable
 - idempotent: clone/npm ci/build guarded via facts, config.js created only if absent
+
+The target board must provide apt, systemd, a `joan2937/pigpio`-compatible
+GPIO 17 input, a Linux HCI Bluetooth adapter, and an Xorg-capable display
+for the optional kiosk.
 
 Written for pyinfra 3 (YAML inventories were dropped in v3; the inventory is the
 Python file inventory.py). Run from this directory:
@@ -68,7 +73,7 @@ apt.packages(
         'bluetooth',
         'bluez',
         'rfkill',
-        # HDMI display kiosk (surf + matchbox on Xorg, validated on Pi 3B)
+        # HDMI display kiosk (surf + matchbox on Xorg, validated on a compatible SBC)
         'xserver-xorg',
         'xinit',
         'x11-xserver-utils',
@@ -115,7 +120,8 @@ systemd.service(
 # 4. Build the pigpio C library from source — Ubuntu resolute (26.04) and
 # Debian trixie dropped the pigpio package; only the libpigpiod-if daemon
 # client libraries remain, which the npm addon cannot use (it links -lpigpio
-# and gates its build on pigpiod being on PATH).
+# and gates its build on pigpiod being on PATH). The target board must support
+# `joan2937/pigpio` on GPIO 17; no alternate GPIO backend is installed.
 # `-std=gnu89` is required: modern GCC treats `void (*fn)()` as a strict
 # no-arg prototype (C99+), which breaks joan2937's legacy code.
 # `make install` runs the optional Python bindings step last, which fails on
@@ -244,7 +250,7 @@ systemd.service(
     _sudo=True,
 )
 
-# 14b. Display kiosk (surf + matchbox on Xorg via xinit, validated on Pi 3B)
+# 14b. Display kiosk (surf + matchbox on Xorg via xinit, validated on a compatible SBC)
 files.put(
     name='Install display kiosk client script',
     src='files/openrowingmonitor-display',

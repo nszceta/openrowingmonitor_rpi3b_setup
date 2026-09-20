@@ -17,7 +17,7 @@ export default {
     maximumTimeBetweenImpulses: 0.018
   },
 
-  // Armbian kernel is PREEMPT (6.18.35-current-bcm2711) — official perf doc allows up to -7/-5.
+  // Requires a PREEMPT kernel — official perf doc allows up to -7/-5.
   // Root runs the service, so os.setPriority() works.
   gpioPriority: -5,
   appPriority: -2,

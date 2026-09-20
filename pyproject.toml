@@ -1,7 +1,7 @@
 [project]
-name = "openrowingmonitor-rpi3b-setup"
+name = "openrowingmonitor-sbc-setup"
 version = "0.1.0"
-description = "pyinfra setup for Open Rowing Monitor on a Raspberry Pi 3B (Armbian)"
+description = "pyinfra setup for Open Rowing Monitor on an SBC (Armbian or a Debian/Ubuntu-based equivalent)"
 requires-python = ">=3.10"
 dependencies = [
     "pyinfra>=3,<4",
